@@ -691,6 +691,7 @@ namespace Makaretu.Dns
             {
                 unicastClientIp4?.Dispose();
                 unicastClientIp6?.Dispose();
+                NetworkChange.NetworkAddressChanged -= OnNetworkAddressChanged;
                 Stop();
             }
         }
