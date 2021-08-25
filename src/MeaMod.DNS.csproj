@@ -1,0 +1,49 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net46;net47;net5;netstandard2.0;netstandard2.1</TargetFrameworks>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <AssemblyName>MeaMod.DNS</AssemblyName>
+    <RootNamespace>MeaMod.DNS</RootNamespace>
+    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
+    <DebugType>full</DebugType>
+    <DisableImplicitNuGetFallbackFolder>true</DisableImplicitNuGetFallbackFolder>
+    
+    <AssemblyVersion>1.0</AssemblyVersion>
+    <Version>1.0.57</Version>
+    
+    <!-- Nuget specs -->
+    <PackageId>MeaMod.DNS</PackageId>
+    <Authors>MeaMod Group</Authors>
+    <Title>Multicast DNS</Title>
+    <Description>A simple Multicast Domain Name Service based on RFC 6762.  Can be used as both a client (sending queries) or a server (responding to queries).</Description>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageReleaseNotes></PackageReleaseNotes>
+    <Copyright>Copyright © 2021 James Weston (MeaMod Group)</Copyright>
+    <PackageTags>multicast mdns dns zeroconf</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <IncludeSymbols>True</IncludeSymbols>
+    <PackageProjectUrl>https://github.com/meamod/MeaMod.DNS</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/meamod/MeaMod.DNS</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <FileVersion>1.0</FileVersion>
+    <Company>MeaMod Group</Company>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <Product>MeaMod.DNS</Product>
+    <NeutralLanguage>en-GB</NeutralLanguage>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="BaseEncoding\StreamHelper.cs" />
+    <Compile Remove="Multicast\LinuxHelper.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Server\RootHints" />
+  </ItemGroup>
+
+</Project>

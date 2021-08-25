@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net47</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+    <DebugType>portable</DebugType>
+    <RootNamespace>MeaMod.DNS</RootNamespace>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <AssemblyVersion>1.0.89.2005</AssemblyVersion>
+    <FileVersion>1.0.89.2005</FileVersion>
+    <!--<Exclude>[xunit.*]*</Exclude>-->
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.11.0" PrivateAssets="all" />
+    <PackageReference Include="MSTest.TestAdapter" Version="2.2.5" PrivateAssets="all" />
+    <PackageReference Include="MSTest.TestFramework" Version="2.2.5" PrivateAssets="all" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\src\MeaMod.DNS.csproj" />
+  </ItemGroup>
+
+</Project>

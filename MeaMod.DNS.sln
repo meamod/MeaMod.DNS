@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31613.86
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6B9AA9C7-5E90-4D10-9DDE-A2AA5FE3ECA6}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitignore = .gitignore
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MeaMod.DNS", "src\MeaMod.DNS.csproj", "{88CD03C2-D3F9-408B-9763-FC77326DB8B9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MeaMod.DNS.Tests", "test\MeaMod.DNS.Tests.csproj", "{04A499A6-87E3-48CB-B45B-CF8DFEB10439}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{88CD03C2-D3F9-408B-9763-FC77326DB8B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88CD03C2-D3F9-408B-9763-FC77326DB8B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88CD03C2-D3F9-408B-9763-FC77326DB8B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88CD03C2-D3F9-408B-9763-FC77326DB8B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04A499A6-87E3-48CB-B45B-CF8DFEB10439}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04A499A6-87E3-48CB-B45B-CF8DFEB10439}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04A499A6-87E3-48CB-B45B-CF8DFEB10439}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04A499A6-87E3-48CB-B45B-CF8DFEB10439}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {36ED5AA7-8F41-4F7D-A665-230635EF64A1}
+	EndGlobalSection
+EndGlobal
