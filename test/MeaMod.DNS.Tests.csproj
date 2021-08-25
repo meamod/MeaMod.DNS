@@ -9,9 +9,20 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyVersion>1.0.89.2005</AssemblyVersion>
-    <FileVersion>1.0.89.2005</FileVersion>
+    <AssemblyVersion>1.0.91.2020</AssemblyVersion>
+    <FileVersion>1.0.91.2020</FileVersion>
     <!--<Exclude>[xunit.*]*</Exclude>-->
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <ShouldCreateLogs>True</ShouldCreateLogs>
+    <AdvancedSettingsExpanded>False</AdvancedSettingsExpanded>
+    <UpdateAssemblyVersion>False</UpdateAssemblyVersion>
+    <UpdateAssemblyFileVersion>False</UpdateAssemblyFileVersion>
+    <UpdateAssemblyInfoVersion>False</UpdateAssemblyInfoVersion>
+    <UpdatePackageVersion>False</UpdatePackageVersion>
+    <AssemblyInfoVersionType>SettingsVersion</AssemblyInfoVersionType>
+    <InheritWinAppVersionFrom>None</InheritWinAppVersionFrom>
   </PropertyGroup>
 
   <ItemGroup>

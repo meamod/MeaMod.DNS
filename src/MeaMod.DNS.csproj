@@ -9,14 +9,14 @@
     <DebugType>full</DebugType>
     <DisableImplicitNuGetFallbackFolder>true</DisableImplicitNuGetFallbackFolder>
     
-    <AssemblyVersion>1.0</AssemblyVersion>
-    <Version>1.0.57</Version>
+    <AssemblyVersion>1.0.70.2032</AssemblyVersion>
+    <Version>1.0.70</Version>
     
     <!-- Nuget specs -->
     <PackageId>MeaMod.DNS</PackageId>
     <Authors>MeaMod Group</Authors>
-    <Title>Multicast DNS</Title>
-    <Description>A simple Multicast Domain Name Service based on RFC 6762.  Can be used as both a client (sending queries) or a server (responding to queries).</Description>
+    <Title>MeaMod.DNS</Title>
+    <Description>A Multicast Domain Name Service based on RFC 6762.  Can be used as both a client (sending queries) or a server (responding to queries).</Description>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageReleaseNotes></PackageReleaseNotes>
     <Copyright>Copyright © 2021 James Weston (MeaMod Group)</Copyright>
@@ -26,7 +26,7 @@
     <PackageProjectUrl>https://github.com/meamod/MeaMod.DNS</PackageProjectUrl>
     <RepositoryUrl>https://github.com/meamod/MeaMod.DNS</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <FileVersion>1.0</FileVersion>
+    <FileVersion>1.0.70.2032</FileVersion>
     <Company>MeaMod Group</Company>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <Product>MeaMod.DNS</Product>
@@ -35,6 +35,21 @@
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <Optimize>false</Optimize>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net46|AnyCPU'">
+    <ShouldCreateLogs>True</ShouldCreateLogs>
+    <AdvancedSettingsExpanded>True</AdvancedSettingsExpanded>
+    <UpdateAssemblyVersion>True</UpdateAssemblyVersion>
+    <UpdateAssemblyFileVersion>True</UpdateAssemblyFileVersion>
+    <UpdateAssemblyInfoVersion>True</UpdateAssemblyInfoVersion>
+    <UpdatePackageVersion>True</UpdatePackageVersion>
+    <PackageVersionSettings>AssemblyVersion.IncrementWithAutoReset.None</PackageVersionSettings>
+    <AssemblyInfoVersionType>SettingsVersion</AssemblyInfoVersionType>
+    <InheritWinAppVersionFrom>None</InheritWinAppVersionFrom>
+    <AssemblyVersionSettings>None.IncrementOnDemand.Increment.TimeStamp</AssemblyVersionSettings>
+    <AssemblyFileVersionSettings>None.IncrementOnDemand.Increment.TimeStamp</AssemblyFileVersionSettings>
+    <AssemblyInfoVersionSettings>None.IncrementOnDemand.Increment.TimeStamp</AssemblyInfoVersionSettings>
   </PropertyGroup>
 
   <ItemGroup>
