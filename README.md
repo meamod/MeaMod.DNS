@@ -1,11 +1,7 @@
-# net-mdns
+# MeaMod.DNS
 
-[![build status](https://ci.appveyor.com/api/projects/status/github/richardschneider/net-mdns?branch=master&svg=true)](https://ci.appveyor.com/project/richardschneider/net-mdns) 
-[![travis build](https://travis-ci.org/richardschneider/net-mdns.svg?branch=master)](https://travis-ci.org/richardschneider/net-mdns)
-[![CircleCI](https://circleci.com/gh/richardschneider/net-mdns.svg?style=svg)](https://circleci.com/gh/richardschneider/net-mdns)
-[![Coverage Status](https://coveralls.io/repos/richardschneider/net-mdns/badge.svg?branch=master&service=github)](https://coveralls.io/github/richardschneider/net-mdns?branch=master)
-[![Version](https://img.shields.io/nuget/v/Makaretu.Dns.Multicast.svg)](https://www.nuget.org/packages/Makaretu.Dns.Multicast)
-[![docs](https://cdn.rawgit.com/richardschneider/net-mdns/master/doc/images/docs-latest-green.svg)](https://richardschneider.github.io/net-mdns/articles/intro.html)
+[![Version](https://img.shields.io/nuget/v/MeaMod.DNS.svg)](https://www.nuget.org/packages/MeaMod.DNS)
+
 
 A simple Multicast Domain Name Service based on [RFC 6762](https://tools.ietf.org/html/rfc6762).  Can be used 
 as both a client (sending queries) or a server (responding to queries).
@@ -13,30 +9,60 @@ as both a client (sending queries) or a server (responding to queries).
 A higher level DNS Service Discovery based on [RFC 6763](https://tools.ietf.org/html/rfc6763) that automatically responds to any query for the 
 service or service instance.
 
+DNS data model with serializer/deserializer for the wire and "master file" format.
+
 ## Credits and Disclaimer
 
-This repository is a fork of Richard Schneider's net-mdns repository.  Since the original repository seems to be no longer maintained (cfr the open pull requests and issues) and @richardschneider seems to be inactive, some users of the net-mdns repository have decided to create a fork of this repository in the dotnetDNS organization.  Hopefully, this initiative can make sure that this excellent tool can be further developed and supported by the OSS community.
+This repository is a fork of Richard Schneider's net-mdns and net-dns repository without any additional dependencies.
 
 ## Features
 
-- Targets Framework 4.6.1, .NET Standard 1.4 and 2.0
+- Targets Framework 4.6, .NET Standard 2.0 and .NET 5
+
+## MeaMod.DNS.Multicast Features
+
 - Supports IPv6 and IPv4 platforms
-- CI on Circle (Debian GNU/Linux), Travis (Ubuntu Xenial and OSX) and AppVeyor (Windows Server 2016)
 - Detects new and/or removed network interfaces
 - Supports multicasting on multiple network interfaces
 - Supports reverse address mapping
 - Supports service subtypes (features)
 - Handles legacy unicast queries, see #61
 
+## MeaMod.DNS Features
+
+- Serialization for the wire and master file formats
+- Pretty printing of messages
+- Supports compressed domain names
+- Supports multiple strings in TXT records
+- Supports the extended 12-bit RCODE
+- Future proof: handles unknown resource records and EDNS options
+- Graceful truncation of messages
+- A name server that answeres DNS questions
+- Data models for
+  - [RFC 1035](https://tools.ietf.org/html/rfc1035) Domain Names (DNS)
+  - [RFC 1183](https://tools.ietf.org/html/rfc1183) New DNS RR Definitions
+  - [RFC 1996](https://tools.ietf.org/html/rfc1996) Zone Changes (DNS NOTIFY)
+  - [RFC 2136](https://tools.ietf.org/html/rfc2136) Dynamic Updates (DNS UPDATE)
+  - [RFC 2845](https://tools.ietf.org/html/rfc2845) Secret Key Transaction Authentication for DNS (TSIG)
+  - [RFC 2930](https://tools.ietf.org/html/rfc2930) Secret Key Establishment for DNS (TKEY RR)
+  - [RFC 3225](https://tools.ietf.org/html/rfc3225) Indicating Resolver Support of DNSSEC
+  - [RFC 3599](https://tools.ietf.org/html/rfc3596) DNS Extensions to Support IPv6
+  - [RFC 4034](https://tools.ietf.org/html/rfc4034) Resource Records for the DNS Security Extensions (DNSSEC)
+  - [RFC 5001](https://tools.ietf.org/html/rfc5001) DNS Name Server Identifier (NSID) Option
+  - [RFC 6672](https://tools.ietf.org/html/rfc6672) DNAME Redirection in the DNS
+  - [RFC 6891](https://tools.ietf.org/html/rfc6891) Extension Mechanisms for DNS (EDNS(0))
+  - [RFC 7828](https://tools.ietf.org/html/rfc7828) The edns-tcp-keepalive EDNS0 Option
+  - [RFC 7830](https://tools.ietf.org/html/rfc7830) The EDNS(0) Padding Option
+
 ## Getting started
 
-Published releases are available on [NuGet](https://www.nuget.org/packages/Makaretu.Dns.Multicast/).  To install, run the following command in the [Package Manager Console](https://docs.nuget.org/docs/start-here/using-the-package-manager-console)
+Published releases are available on [NuGet](https://www.nuget.org/packages/MeaMod.DNS/).  To install, run the following command in the [Package Manager Console](https://docs.nuget.org/docs/start-here/using-the-package-manager-console)
 
-    PM> Install-Package Makaretu.Dns.Multicast
+    PM> Install-Package MeaMod.DNS
     
 or using .NET CLI run the following command in the project folder
 
-    > dotnet add package Makaretu.Dns.Multicast
+    > dotnet add package MeaMod.DNS
     
 ## Usage Service Discovery
 
@@ -45,7 +71,7 @@ or using .NET CLI run the following command in the project folder
 Always broadcast the service ("foo") running on local host with port 1024.
 
 ```csharp
-using Makaretu.Dns;
+using MeaMod.DNS.Multicast;
 
 var service = new ServiceProfile("x", "_foo._tcp", 1024);
 var sd = new ServiceDiscovery();
@@ -59,7 +85,7 @@ See the [example advertiser](Spike/Program.cs) for a working program.
 Find all services running on the local link.
 
 ```csharp
-using Makaretu.Dns;
+using MeaMod.DNS.Multicast;
 
 var sd = new ServiceDiscovery();
 sd.ServiceDiscovered += (s, serviceName) => { // Do something };
@@ -68,7 +94,7 @@ sd.ServiceDiscovered += (s, serviceName) => { // Do something };
 Find all service instances running on the local link.
 
 ```csharp
-using Makaretu.Dns;
+using MeaMod.DNS.Multicast;
 
 var sd = new ServiceDiscovery();
 sd.ServiceInstanceDiscovered += (s, e) => { // Do something };
@@ -85,7 +111,7 @@ The `AnsweredReceived` callback contains any answer that is seen, not just the a
 to the specific query.
 
 ```csharp
-using Makaretu.Dns;
+using MeaMod.DNS.Multicast;
 
 var mdns = new MulticastService();
 mdns.NetworkInterfaceDiscovered += (s, e) => mdns.SendQuery("appletv.local");
@@ -98,7 +124,8 @@ mdns.Start();
 Get the first answer to Apple TVs. Wait 2 seconds for an answer.
 
 ```csharp
-using Makaretu.Dns;
+using MeaMod.DNS;
+using MeaMod.DNS.Multicast;
 
 var service = "appletv.local";
 var query = new Message();
@@ -118,7 +145,8 @@ using (var mdns = new MulticastService())
 Respond to a query for the service.  Note that `ServiceDiscovery.Advertise` is much easier.
 
 ```csharp
-using Makaretu.Dns;
+using MeaMod.DNS;
+using MeaMod.DNS.Multicast;
 
 var service = "...";
 var mdns = new MulticastService();
@@ -143,15 +171,70 @@ mdns.QueryReceived += (s, e) =>
 };
 mdns.Start();
 ```
+## Name Server
+
+Create a name server that can answer questions for a zone.
+
+```csharp
+using MeaMod.DNS;
+using MeaMod.DNS.Server;
+
+var catalog = new Catalog();
+catalog.IncludeZone(...);
+catalog.IncludeRootHints();
+var resolver = new NameServer { Catalog = catalog };
+```
+
+Answer a question
+
+```csharp
+var request = new Message();
+request.Questions.Add(new Question { Name = "ns.example.com", Type = DnsType.AAAA });
+var response = await resolver.ResolveAsync(request);
+```
+
+### Data Model
+
+```csharp
+using MeaMod.DNS;
+
+var msg = new Message
+{
+	AA = true,
+	QR = true,
+	Id = 1234
+};
+msg.Questions.Add(new Question 
+{ 
+	Name = "emanon.org" 
+});
+msg.Answers.Add(new ARecord 
+{ 
+	Name = "emanon.org",
+	Address = IPAddress.Parse("127.0.0.1") 
+});
+msg.AuthorityRecords.Add(new SOARecord
+{
+	Name = "emanon.org",
+	PrimaryName = "erehwon",
+	Mailbox = "hostmaster.emanon.org"
+});
+msg.AdditionalRecords.Add(new ARecord 
+{ 
+	Name = "erehwon", 
+	Address = IPAddress.Parse("127.0.0.1") 
+});
+```
 
 ## Related projects
 
 - [net-dns](https://github.com/richardschneider/net-dns) - DNS data model and Name Server with serializer for the wire and master file format
 - [net-udns](https://github.com/richardschneider/net-udns) - client for unicast DNS, DNS over HTTPS (DOH) and DNS over TLS (DOT)
+- [net-mdns](https://github.com/richardschneider/net-mdns) - client and server for multicast DNS
 
 ## License
+Copyright © 2021 James Weston
+
 Copyright © 2018-2019 Richard Schneider (makaretu@gmail.com)
 
-The package is licensed under the [MIT](http://www.opensource.org/licenses/mit-license.php "Read more about the MIT license form") license. Refer to the [LICENSE](https://github.com/richardschneider/net-mdns/blob/master/LICENSE) file for more information.
-
-<a href="https://www.buymeacoffee.com/kmXOxKJ4E" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/yellow_img.png" alt="Buy Me A Coffee" style="height: auto !important;width: auto !important;" ></a>
+The package is licensed under the [MIT](http://www.opensource.org/licenses/mit-license.php "Read more about the MIT license form") license. Refer to the [LICENSE](https://github.com/meamod/MeaMod.DNS/blob/master/LICENSE) file for more information.

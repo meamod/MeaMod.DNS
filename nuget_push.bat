@@ -14,6 +14,6 @@ dotnet pack -c Release --no-build
 
 nuget sign "src\bin\Release\*.nupkg" -CertificateSubjectName "James Weston" -Timestamper http://timestamp.digicert.com -NonInteractive
 
-echo nuget push "src\bin\Release\*.nupkg" -Source nuget.org -SkipDuplicate -NonInteractive
+nuget push "src\bin\Release\*.nupkg" -Source nuget.org -SkipDuplicate -NonInteractive
 
 move "src\bin\Release\*.nupkg" nugetpackagearchive
