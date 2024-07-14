@@ -24,7 +24,7 @@ namespace MeaMod.DNS.Server
         /// </summary>
         /// <value>
         ///   <b>false</b> to answer <b>any</b> of the questions. 
-        ///   <b>false</b> to answer <b>all</b> of the questions.
+        ///   <b>true</b> to answer <b>all</b> of the questions.
         ///   The default is <b>false</b>.
         /// </value>
         /// <remarks>
