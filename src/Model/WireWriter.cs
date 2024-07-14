@@ -270,7 +270,8 @@ namespace MeaMod.DNS.Model
             for (var i = 0; i < n; ++i)
             {
                 var label = labels[i];
-                if (label.Length > 63)
+                var labelBytes = Encoding.UTF8.GetBytes(label);
+                if (labelBytes.Length > 63)
                     throw new ArgumentException($"Label '{label}' cannot exceed 63 octets.");
 
                 // Check for qualified name already used.
@@ -286,8 +287,7 @@ namespace MeaMod.DNS.Model
                 }
 
                 // Add the label
-                var bytes = Encoding.UTF8.GetBytes(label);
-                WriteByteLengthPrefixedBytes(bytes);
+                WriteByteLengthPrefixedBytes(labelBytes);
             }
 
             stream.WriteByte(0); // terminating byte
