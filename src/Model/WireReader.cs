@@ -208,8 +208,7 @@ namespace MeaMod.DNS.Model
             }
 
             // Read current label and remaining labels.
-            var buffer = ReadBytes(length);
-            labels.Add(Encoding.UTF8.GetString(buffer, 0, length));
+            labels.Add(ReadUTF8String(length));
             labels.AddRange(ReadLabels());
 
             // Add to compressed names.
@@ -222,7 +221,7 @@ namespace MeaMod.DNS.Model
         ///   Read a string.
         /// </summary>
         /// <remarks>
-        ///   Strings are encoded with a length prefixed byte.  All strings are ASCII.
+        ///   Strings are encoded in ASCII with a length prefixed byte.
         /// </remarks>
         /// <returns>
         ///   The string.
@@ -241,6 +240,42 @@ namespace MeaMod.DNS.Model
                 throw new InvalidDataException("Only ASCII characters are allowed.");
             }
             return Encoding.ASCII.GetString(bytes);
+        }
+
+        /// <summary>
+        ///   Read a string.
+        /// </summary>
+        /// <remarks>
+        ///   Strings are encoded in UTF8 with a length prefixed byte.
+        /// </remarks>
+        /// <returns>
+        ///   The string.
+        /// </returns>
+        /// <exception cref="EndOfStreamException">
+        ///   When no more data is available.
+        /// </exception>
+        public string ReadUTF8String()
+        {
+            return Encoding.UTF8.GetString(ReadByteLengthPrefixedBytes());
+        }
+
+        /// <summary>
+        ///   Read a string of a given length.
+        /// </summary>
+        /// <remarks>
+        ///   Strings are encoded in UTF8.
+        /// </remarks>
+        /// <returns>
+        ///   The string.
+        /// </returns>
+        /// <exception cref="EndOfStreamException">
+        ///   When no more data is available.
+        /// </exception>
+        public string ReadUTF8String(int length)
+        {
+            if (length == 0)
+                return string.Empty;
+            return Encoding.UTF8.GetString(ReadBytes(length));
         }
 
         /// <summary>

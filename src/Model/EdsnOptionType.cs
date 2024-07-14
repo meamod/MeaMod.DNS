@@ -12,7 +12,11 @@
     /// <seealso cref="EdnsOptionRegistry"/>
     public enum EdnsOptionType : ushort
     {
-
+        /// <summary>
+        /// Apple's DNS Long-Lived Queries (LLQ) Protocol
+        /// </summary>
+        /// <seealso href="https://tools.ietf.org/html/rfc8764"/>
+        LLQ = 1,
         /// <summary>
         ///   DNS Name Server Identifier (NSID) Option.
         /// </summary>
@@ -81,6 +85,12 @@
         /// </summary>
         /// <seealso href="https://tools.ietf.org/html/rfc8145"/>
         KeyTag = 14,
+
+        /// <summary>
+        /// Extended DNS Errors
+        /// </summary>
+        /// <seealso href="https://tools.ietf.org/html/rfc8914"/>
+        ExtendedDNSError = 15,
 
         /// <summary>
         ///   Minimum value for local or experiment use.

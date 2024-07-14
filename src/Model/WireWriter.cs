@@ -317,6 +317,32 @@ namespace MeaMod.DNS.Model
         }
 
         /// <summary>
+        ///   Write a string.
+        /// </summary>
+        /// <exception cref="ArgumentException">
+        ///   When the length is greater than <see cref="byte.MaxValue"/>
+        /// </exception>
+        /// <remarks>
+        ///   Strings are encoded with a length prefixed byte.  All strings must be UTF-8.
+        /// </remarks>
+        public void WriteStringUTF8(string value)
+        {
+            var bytes = Encoding.UTF8.GetBytes(value);
+            WriteByteLengthPrefixedBytes(bytes);
+        }
+
+        /// <summary>
+        ///   Write a string.
+        /// </summary>
+        /// <remarks>
+        ///   Strings are encoded in UTF8.
+        /// </remarks>
+        public void WriteStringUTF8Unprefixed(string value)
+        {
+            WriteBytes(Encoding.UTF8.GetBytes(value));
+        }
+
+        /// <summary>
         ///   Write a time span with 16-bits.
         /// </summary>
         /// <param name="value">

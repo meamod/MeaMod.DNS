@@ -53,6 +53,7 @@ This repository is a fork of Richard Schneider's net-mdns and net-dns repository
   - [RFC 6891](https://tools.ietf.org/html/rfc6891) Extension Mechanisms for DNS (EDNS(0))
   - [RFC 7828](https://tools.ietf.org/html/rfc7828) The edns-tcp-keepalive EDNS0 Option
   - [RFC 7830](https://tools.ietf.org/html/rfc7830) The EDNS(0) Padding Option
+  - [RFC 8914](https://tools.ietf.org/html/rfc8914) Extended DNS Errors
 
 ## Getting started
 
