@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net47</TargetFramework>
+    <TargetFramework>net48</TargetFramework>
 
     <IsPackable>false</IsPackable>
     <DebugType>portable</DebugType>
@@ -26,9 +26,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.11.0" PrivateAssets="all" />
-    <PackageReference Include="MSTest.TestAdapter" Version="2.2.5" PrivateAssets="all" />
-    <PackageReference Include="MSTest.TestFramework" Version="2.2.5" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.10.0" PrivateAssets="all" />
+    <PackageReference Include="MSTest.TestAdapter" Version="3.4.3" PrivateAssets="all" />
+    <PackageReference Include="MSTest.TestFramework" Version="3.4.3" PrivateAssets="all" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net46;net47;net5;netstandard2.0;netstandard2.1</TargetFrameworks>
+    <TargetFrameworks>net462;net47;net48;net6.0;net7.0;netstandard2.0;netstandard2.1</TargetFrameworks>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <AssemblyName>MeaMod.DNS</AssemblyName>
     <RootNamespace>MeaMod.DNS</RootNamespace>
@@ -9,24 +9,24 @@
     <DebugType>full</DebugType>
     <DisableImplicitNuGetFallbackFolder>true</DisableImplicitNuGetFallbackFolder>
     
-    <AssemblyVersion>1.0.70.2032</AssemblyVersion>
-    <Version>1.0.70</Version>
+    <AssemblyVersion>1.0.71.2033</AssemblyVersion>
+    <Version>1.0.71</Version>
     
     <!-- Nuget specs -->
     <PackageId>MeaMod.DNS</PackageId>
     <Authors>MeaMod Group</Authors>
     <Title>MeaMod.DNS</Title>
-    <Description>A Multicast Domain Name Service based on RFC 6762.  Can be used as both a client (sending queries) or a server (responding to queries).</Description>
+    <Description>A Multicast Domain Name Service based on RFC 6762.  Can be used as both a client (sending queries) or a server (responding to queries) and DNS data model and Name Server with serializer for the wire and master file format </Description>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageReleaseNotes></PackageReleaseNotes>
-    <Copyright>Copyright © 2021 James Weston (MeaMod Group)</Copyright>
+    <Copyright>Copyright © 2024 James Weston (MeaMod Group)</Copyright>
     <PackageTags>multicast mdns dns zeroconf</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <IncludeSymbols>True</IncludeSymbols>
     <PackageProjectUrl>https://github.com/meamod/MeaMod.DNS</PackageProjectUrl>
     <RepositoryUrl>https://github.com/meamod/MeaMod.DNS</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <FileVersion>1.0.70.2032</FileVersion>
+    <FileVersion>1.0.71.2033</FileVersion>
     <Company>MeaMod Group</Company>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <Product>MeaMod.DNS</Product>
